@@ -10,12 +10,12 @@ if (Get-Module -ListAvailable -Name Carbon) {
 
 Import-Module Carbon
 
-if ([Environment]::GetEnvironmentVariable("CredibleLocal") -eq $null) {
-    Write-Host "Creating CredibleLocal Environment Variable With Default Value";
+if ([Environment]::GetEnvironmentVariable("LocalIISFolder") -eq $null) {
+    Write-Host "Creating LocalIISFolder Environment Variable With Default Value";
     $WebRootFolder = "C:\inetpub\wwwroot";
-    [Environment]::SetEnvironmentVariable("CredibleLocal", $WebRootFolder, "User")
+    [Environment]::SetEnvironmentVariable("LocalIISFolder", $WebRootFolder, "User")
 } else {
-    $WebRootFolder = [Environment]::GetEnvironmentVariable("CredibleLocal");
+    $WebRootFolder = [Environment]::GetEnvironmentVariable("LocalIISFolder");
 }
 
 Write-Host $WebRootFolder;
@@ -48,8 +48,6 @@ if ( [String]::IsNullOrEmpty($BranchName) ) {
 } else {
     Write-Host "Detected Branch name: " $BranchName;
     ConfigureLocalSite $BranchName.ToLower();
-    $LoginSite = "login." + $BranchName.ToLower();
-    ConfigureLocalSite $LoginSite;
     IISRESET;
 }
 
