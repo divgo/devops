@@ -1,5 +1,11 @@
 # devops
 
+# ConfigureRoutingObjects.ps1
+Create "routable" objects in a Citrix NetScaler Load Balancer. Requires a NetScaler configured to support Expression Based Routing. See https://medium.com/modern-stack/microservice-routing-using-the-netscaler-6fdb1bda2459 for more info.  
+
+# SetupLocal.ps1
+Configure IIS on a local machine to allow accessing sites by domain name ([BranchName].localhost.com) rather than localhost. Allows IIS on Windows 7 to host multiple sites and eases developer configuration.
+
 # Sync_Remote_Directories.ps1
 Sync a local directory to a remote server.
 Script determines which local files are different from the remote server and only copies those files across the wire. 
